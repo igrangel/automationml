@@ -22,7 +22,7 @@ aml:CAEXFile a owl:Class ;
 aml:hasFileName a owl:DatatypeProperty ;
     rdfs:domain aml:CAEXFile ;
     rdfs:label "has File Name" ;
-    rdfs:range xsd:string 
+    rdfs:range xsd:string   
 
 aml:hasSchemaVersion a owl:DatatypeProperty ;
     rdfs:domain aml:CAEXFile ;
