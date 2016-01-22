@@ -16,13 +16,13 @@ aml: a owl:Ontology ;
 
 aml:CAEXFile a owl:Class ;
     rdfs:label "CAEX File"@en;
-    rdfs:rdfscomment "CAEX root element"@en .
+    rdfs:rdfscomment "Root-element of the CAEX schema"@en .
 
 # CAEX root element properties
 aml:hasFileName a owl:DatatypeProperty ;
     rdfs:domain aml:CAEXFile ;
     rdfs:label "has File Name" ;
-    rdfs:range xsd:string   
+    rdfs:range xsd:string .     
 
 aml:hasSchemaVersion a owl:DatatypeProperty ;
     rdfs:domain aml:CAEXFile ;
@@ -101,9 +101,24 @@ aml:SystemUnitClassLib a owl:Class ;
     rdfs:label "System Unit ClassLib"@en ;
     rdfs:rdfscomment "Store vendor specific AML classes"@en .	
 	
+aml:SystemUnitClass a owl:Class ;
+    rdfs:label "System Unit Class"@en ;
+    rdfs:rdfscomment "Allows for different user-defined classes. Inheritance between a SystemUnitClass and an object instance is not allowed."@en .
+	
+aml:hasSystemUnitClass a owl:ObjectProperty ;
+    rdfs:domain aml:SystemUnitClassLib ;
+    rdfs:label "has System Unit Class" ;
+    rdfs:range aml:SystemUnitClass .	
+	
 aml:hasVersion a rdfs:DatatypeProperty;
     rdfs:label "has Version"@en ;
     rdfs:range xsd:string .		
+	
+aml:CAEXBasicObject a owl:Class ;
+    rdfs:label "CAEX Basic Object"@en ;
+    rdfs:rdfscomment "CAEX basis object that comprises a basic set of attributes and header information which exist for all CAEX elements."@en .	
+	
+	
 	
 	
 	
