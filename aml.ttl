@@ -1,0 +1,109 @@
+# Saved by TopBraid on Tue Dec 15 18:03:54 CET 2015
+# baseURI: http://vocab.cs.uni-bonn.de/aml/#
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix aml:  <http://vocab.cs.uni-bonn.de/aml#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml:     <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+aml: a owl:Ontology ;
+     owl:imports <http://www.w3.org/2004/02/skos/core> .
+
+aml:CAEXFile a owl:Class ;
+    rdfs:label "CAEX File"@en;
+    rdfs:rdfscomment "CAEX root element"@en .
+
+# CAEX root element properties
+aml:hasFileName a owl:DatatypeProperty ;
+    rdfs:domain aml:CAEXFile ;
+    rdfs:label "has File Name" ;
+    rdfs:range xsd:string .
+
+aml:hasSchemaVersion a owl:DatatypeProperty ;
+    rdfs:domain aml:CAEXFile ;
+    rdfs:label "has Schema Version" ;
+    rdfs:range xsd:string .
+	
+aml:hasAdditionalInformation a owl:ObjectProperty ;
+    rdfs:domain aml:CAEXFile ;
+    rdfs:label "has Additional Information" ;
+    rdfs:range aml:AdditionalInformation .
+	
+aml:AdditionalInformation a owl:Class ;
+    rdfs:label "Additional Information"@en ;
+    rdfs:rdfscomment "Additional Information for CAEX File"@en .
+	
+aml:hasWriterName a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Name" ;
+    rdfs:range xsd:string .	
+	
+aml:hasWriterId a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Id" ;
+    rdfs:range xsd:string .	
+	
+aml:hasWriterVendor a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Vendor" ;
+    rdfs:range xsd:string .	
+	
+aml:hasWriterVendorURL a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Vendor URL" ;
+    rdfs:range xsd:string .		
+	
+aml:hasWriterVendorURL a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Vendor URL" ;
+    rdfs:range xsd:string .	
+	
+aml:hasWriterVersion a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Version" ;
+    rdfs:range xsd:string .	
+	
+aml:hasWriterRelease a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Release" ;
+    rdfs:range xsd:string .		
+	
+aml:lastWritingDate a owl:DatatypeProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "has Writer Release" ;
+    rdfs:range xsd:dateTime .	
+	
+aml:hasProject a owl:ObjectProperty ;
+    rdfs:domain aml:AdditionalInformation ;
+    rdfs:label "Related Project for the CAEX File" ;
+    rdfs:range aml:Project .		
+	
+aml:Project a owl:Class ;
+    rdfs:label "Project"@en ;
+    rdfs:rdfscomment "A Project related to the header information with the CAEX File"@en .	
+	
+aml:hasProjectTitle rdfs:subPropertyOf dc:title ;
+    rdfs:domain aml:Project ;
+    rdfs:label "has Project Release" ;
+    rdfs:range xsd:string .	
+	
+aml:hasProjectId rdfs:subPropertyOf dc:identifier ;
+    rdfs:domain aml:Project ;
+    rdfs:label "has Project Id" ;
+    rdfs:range xsd:string .		
+	
+aml:SystemUnitClassLib a owl:Class ;
+    rdfs:label "System Unit ClassLib"@en ;
+    rdfs:rdfscomment "Store vendor specific AML classes"@en .	
+	
+aml:hasVersion a rdfs:DatatypeProperty;
+    rdfs:label "has Version"@en ;
+    rdfs:range xsd:string .		
+	
+	
+	
