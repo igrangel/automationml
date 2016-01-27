@@ -118,6 +118,27 @@ aml:CAEXBasicObject a owl:Class ;
     rdfs:label "CAEX Basic Object"@en ;
     rdfs:rdfscomment "CAEX basis object that comprises a basic set of attributes and header information which exist for all CAEX elements."@en .	
 	
+aml:ExternalReference a owl:Class;
+    rdfs:label "External Reference"@en ;
+    rdfs:comment "External Reference for a CAEX File"@en .
+	
+aml:hasExternalReference a owl:ObjectProperty ;
+    rdfs:domain aml:CAEXFile ;
+    rdfs:label "has External Reference"@en ;
+    rdfs:comment "A CAEX File contains external references" ;
+    rdfs:range aml:ExternalReference .		
+	
+aml:externalReferencePath a owl:DatatypeProperty ;
+    rdfs:domain aml:ExternalReference ;
+    rdfs:label "external Reference Path"@en ;
+    rdfs:comment "A external Reference of a CAEX File contains path to the file" ;
+    rdfs:range xsd:string .	
+	
+aml:externalReferenceAlias a owl:DatatypeProperty ;
+    rdfs:domain aml:ExternalReference ;
+    rdfs:label "external Reference Alias"@en ;
+    rdfs:comment "A external Reference of a CAEX File has Alias" ;
+    rdfs:range xsd:string .			
 	
 	
 	
