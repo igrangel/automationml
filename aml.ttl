@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Feb 01 12:17:50 CET 2016
+# Saved by TopBraid on Mon Feb 01 14:26:36 CET 2016
 # baseURI: http://vocab.cs.uni-bonn.de/aml/#
 # imports: http://purl.org/dc/elements/1.1/
 
@@ -34,6 +34,12 @@ aml:Attribute_1
       rdfs:label "Attribute 1"@en ;
       schema:name "New Attribute"@en .
 
+aml:BaseInterface
+      rdf:type owl:Class ;
+      rdfs:comment "Basic abstract interface; shall be used as parent for the description of all AML interface classes"^^xsd:string ;
+      rdfs:label "BaseInterface"^^xsd:string ;
+      rdfs:subClassOf aml:InterfaceClass .
+
 aml:CAEXBasicObject
       rdf:type owl:Class ;
       rdfs:label "CAEX Basic Object"@en ;
@@ -43,6 +49,13 @@ aml:CAEXFile
       rdf:type owl:Class ;
       rdfs:label "CAEX File"@en ;
       rdfs:rdfscomment "Root-element of the CAEX schema"@en .
+
+aml:Direction
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Specifies the Direction of an Order. The permitted values are “In”, “Out”."^^xsd:string ;
+      rdfs:domain aml:Order ;
+      rdfs:label "Direction"^^xsd:string ;
+      rdfs:range xsd:string .
 
 aml:ExternalInterface
       rdf:type owl:Class ;
@@ -128,6 +141,24 @@ aml:InternalElement_2
               aml:RoleRequirements_1 ;
       aml:supportedRoleClass
               aml:SupportedRoleClass1 .
+
+aml:Order
+      rdf:type owl:Class ;
+      rdfs:comment "Abstract class that shall be used for the descriptions description of orders, e.g. a successor or a predecessor."^^xsd:string ;
+      rdfs:label "Order"^^xsd:string ;
+      rdfs:subClassOf aml:InterfaceClass .
+
+aml:PPRConnector
+      rdf:type owl:Class ;
+      rdfs:comment "Provide a high level relation between ports Relates resources, products and processes"^^xsd:string ;
+      rdfs:label "PPRConnector"^^xsd:string ;
+      rdfs:subClassOf aml:InterfaceClass .
+
+aml:PortConnector
+      rdf:type owl:Class ;
+      rdfs:comment "Provide a high level relation between ports"^^xsd:string ;
+      rdfs:label "Order"^^xsd:string ;
+      rdfs:subClassOf aml:InterfaceClass .
 
 aml:Project
       rdf:type owl:Class ;
@@ -262,6 +293,13 @@ aml:hasInstanceHierarchy
       rdfs:domain aml:CAEXFile ;
       rdfs:label "has Instance Hierarchy"@en ;
       rdfs:range aml:InstanceHierarchy .
+
+aml:hasInterfaceClass
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Model the relation between Interface Class Lib and Interface Class"^^xsd:string ;
+      rdfs:domain aml:InterfaceClassLib ;
+      rdfs:label "has Interface Class"^^xsd:string ;
+      rdfs:range aml:InterfaceClass .
 
 aml:hasInternalElement
       rdf:type rdf:Property ;
