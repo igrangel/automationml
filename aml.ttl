@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Feb 01 11:11:33 CET 2016
+# Saved by TopBraid on Mon Feb 01 12:17:50 CET 2016
 # baseURI: http://vocab.cs.uni-bonn.de/aml/#
 # imports: http://purl.org/dc/elements/1.1/
 
@@ -13,7 +13,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 schema:name
-      rdf:type owl:DatatypeProperty .
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty .
 
 aml:  rdf:type owl:Ontology ;
       owl:imports dc: , <http://www.w3.org/2004/02/skos/core> .
@@ -52,6 +52,14 @@ aml:ExternalInterface1
       rdf:type aml:ExternalInterface ;
       rdfs:label "ExternalInterface1"@en ;
       dc:identifier "{5f535d4c-dd46-4c1c-898c-4e58419048b6}" ;
+      schema:name "EnergySupply"@en ;
+      aml:refBaseClassPath
+              "MyInterfaces/Energy"@en .
+
+aml:ExternalInterface2
+      rdf:type aml:ExternalInterface ;
+      rdfs:label "ExternalInterface1"@en ;
+      dc:identifier "{dd0e0dfe-10f8-4068-845b-9c29699ac79b}" ;
       schema:name "EnergySupply"@en ;
       aml:refBaseClassPath
               "MyInterfaces/Energy"@en .
@@ -132,10 +140,29 @@ aml:RefBaseSystemUnitPath
       rdfs:label "Ref Base System Unit Path"@en ;
       rdfs:range xsd:string .
 
+aml:RoleClass
+      rdf:type owl:Class ;
+      rdfs:comment "Describes an abstract functionality without defining the underlying technical implementation.  Example role classes are a Resource or Robot."^^xsd:string ;
+      rdfs:label "RoleClass"^^xsd:string ;
+      rdfs:subClassOf owl:Thing .
+
 aml:RoleClassLib
       rdf:type owl:Class ;
       rdfs:comment "Definitions of abstract characteristics of CAEX objects and thus serve the automatic semantic interpretation of user-defined AML objects"@en ;
       rdfs:label "RoleClassLib"^^xsd:string .
+
+aml:RoleClassLib_1
+      rdf:type aml:RoleClassLib ;
+      rdfs:label "Role Class Lib 1"@en ;
+      schema:name "ManufacturingRoleClasses"@en ;
+      schema:version "1.0" .
+
+aml:RoleClass_1
+      rdf:type aml:RoleClass ;
+      rdfs:label "RoleClass 1"@en ;
+      schema:name "Tool"@en ;
+      aml:refBaseClassPath
+              "BaseRoleClassLib@AutomationMLBaseRoleClassLib/AutomationMLBaseRole" .
 
 aml:RoleRequirements
       rdf:type owl:Class ;
@@ -169,6 +196,21 @@ aml:SystemUnitClassLib
       rdfs:label "System Unit ClassLib"@en ;
       rdfs:rdfscomment "Store vendor specific AML classes"@en .
 
+aml:SystemUnitClassLib_1
+      rdf:type aml:SystemUnitClassLib ;
+      rdfs:label "SystemUnitClassLib 1"^^xsd:string ;
+      schema:name "LibOfCommonTools" ;
+      schema:version "1.0" .
+
+aml:SystemUnitClass_1
+      rdf:type aml:SystemUnitClass ;
+      rdfs:label "SystemUnitClass 1"^^xsd:string ;
+      schema:name "ElectricScrewdriver" ;
+      aml:hasExternalInterface
+              aml:ExternalInterface2 ;
+      aml:supportedRoleClass
+              aml:SupportedRoleClass1 .
+
 aml:externalReferenceAlias
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "A external Reference of a CAEX File has Alias" ;
@@ -198,7 +240,7 @@ aml:hasAttribute
 aml:hasExternalInterface
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Connects an internal Element with an External Interface"@en ;
-      rdfs:domain aml:InternalElement ;
+      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
       rdfs:label "has External Interface"@en ;
       rdfs:range aml:ExternalInterface .
 
@@ -320,7 +362,7 @@ aml:lastWritingDate
 aml:refBaseClassPath
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Stores the name of the parent class"@en ;
-      rdfs:domain aml:InterfaceClass , aml:ExternalInterface ;
+      rdfs:domain aml:RoleClassLib , aml:InterfaceClass , aml:ExternalInterface ;
       rdfs:label "refBaseClassPath"@en ;
       rdfs:range xsd:string .
 
@@ -340,7 +382,7 @@ aml:refRoleClassPath
 aml:supportedRoleClass
       rdf:type rdf:Property ;
       rdfs:comment "Internal elements has Supported Role Class"@en ;
-      rdfs:domain aml:InternalElement ;
+      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
       rdfs:label "Supported Role Class"@en ;
       rdfs:range aml:SupportedRoleClass .
 
