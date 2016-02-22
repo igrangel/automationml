@@ -397,6 +397,12 @@ aml:lastWritingDate
       rdfs:label "has Writer Release" ;
       rdfs:range xsd:dateTime .
 
+aml:hasAutomationMLVersion 
+      rdf:type owl:DatatypeProperty ;
+      rdfs:domain aml:AdditionalInformation ;
+      rdfs:label "has Automation ML Version" ;
+      rdfs:range xsd:float .
+
 aml:refBaseClassPath
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Stores the name of the parent class"@en ;
