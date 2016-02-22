@@ -401,7 +401,7 @@ aml:hasAutomationMLVersion
       rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:AdditionalInformation ;
       rdfs:label "has Automation ML Version" ;
-      rdfs:range xsd:float .
+      rdfs:range xsd:string .
 
 aml:refBaseClassPath
       rdf:type owl:DatatypeProperty ;
