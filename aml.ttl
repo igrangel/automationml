@@ -9,12 +9,12 @@
 @prefix xml:     <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-schema:name
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty .
-
 aml:  rdf:type owl:Ontology ;
       owl:imports <http://www.w3.org/2004/02/skos/core> , dc: .
 
+schema:name
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty .
+	  
 aml:AdditionalInformation
       rdf:type owl:Class ;
       rdfs:label "Additional Information"@en ;
@@ -24,11 +24,6 @@ aml:Attribute
       rdf:type owl:Class ;
       rdfs:comment "Attributes that belongs to internal elements"@en ;
       rdfs:label "Attribute"@en .
-
-aml:Attribute_1
-      rdf:type aml:Attribute ;
-      rdfs:label "Attribute 1"@en ;
-      schema:name "New Attribute"@en .
 
 aml:BaseInterface
       rdf:type owl:Class ;
@@ -57,26 +52,6 @@ aml:ExternalInterface
       rdf:type owl:Class ;
       rdfs:label "External Interface"@en .
 
-aml:ExternalInterface1
-      rdf:type aml:ExternalInterface ;
-      rdfs:label "ExternalInterface1"@en ;
-      dc:identifier "{5f535d4c-dd46-4c1c-898c-4e58419048b6}" ;
-      schema:name "EnergySupply"@en ;
-      aml:refBaseClassPath
-              "MyInterfaces/Energy"@en .
-
-aml:ExternalInterface2
-      rdf:type aml:ExternalInterface ;
-      rdfs:label "ExternalInterface1"@en ;
-      dc:identifier "{dd0e0dfe-10f8-4068-845b-9c29699ac79b}" ;
-      schema:name "EnergySupply"@en ;
-      aml:refBaseClassPath
-              "MyInterfaces/Energy"@en .
-
-aml:ExternalInterface3
-      rdf:type aml:ExternalInterface ;
-      rdfs:label "ExternalInterface3"^^xsd:string .
-
 aml:ExternalReference
       rdf:type owl:Class ;
       rdfs:comment "External Reference for a CAEX File"@en ;
@@ -96,51 +71,9 @@ aml:InterfaceClassLib
       rdfs:label "Interface Class Lib"@en ;
       schema:name "MyInterfaces"@en .
 
-aml:InterfaceClassLib_1
-      rdf:type aml:InterfaceClassLib ;
-      rdfs:label "InterfaceClassLib 1"@en ;
-      schema:name "MyInterfaces"@en ;
-      aml:hasInterfaceClass
-              aml:InterfaceClass_1 .
-
-aml:InterfaceClass_1
-      rdf:type aml:InterfaceClass ;
-      rdfs:label "Energy"@en ;
-      aml:refBaseClassPath
-              "BaseInterfaceClassLib@AutomationMLInterfaceClassLib/AutomationMLBaseInterface" .
-
 aml:InternalElement
       rdf:type owl:Class ;
       rdfs:label "Internal Element"@en .
-
-aml:InternalElement_1
-      rdf:type aml:InternalElement ;
-      rdfs:label "firstScrewdriver"@en ;
-      dc:identifier "{788eb291-f103-4fdc-aba0-4893b599f556}" ;
-      schema:name "firstScrewdriver"@en ;
-      aml:RefBaseSystemUnitPath
-              "LibOfCommonTools/ElectricScrewdriver"@en ;
-      aml:hasAttribute aml:Attribute_1 ;
-      aml:hasExternalInterface
-              aml:ExternalInterface1 ;
-      aml:hasRoleRequeriment
-              aml:RoleRequirements_1 ;
-      aml:supportedRoleClass
-              aml:SupportedRoleClass1 .
-
-aml:InternalElement_2
-      rdf:type aml:InternalElement ;
-      rdfs:label "secondScrewdriver"@en ;
-      dc:identifier "{19dcf818-4716-4fc1-a85f-28e1938c4c3a}" ;
-      schema:name "secondScrewdriver"@en ;
-      aml:RefBaseSystemUnitPath
-              "LibOfCommonTools/ElectricScrewdriver"@en ;
-      aml:hasExternalInterface
-              aml:ExternalInterface1 ;
-      aml:hasRoleRequeriment
-              aml:RoleRequirements_1 ;
-      aml:supportedRoleClass
-              aml:SupportedRoleClass1 .
 
 aml:Order
       rdf:type owl:Class ;
@@ -181,38 +114,13 @@ aml:RoleClassLib
       rdfs:comment "Definitions of abstract characteristics of CAEX objects and thus serve the automatic semantic interpretation of user-defined AML objects"@en ;
       rdfs:label "RoleClassLib"@en .
 
-aml:RoleClassLib_1
-      rdf:type aml:RoleClassLib ;
-      rdfs:label "Role Class Lib 1"@en ;
-      schema:name "ManufacturingRoleClasses"@en ;
-      schema:version "1.0" .
-
-aml:RoleClass_1
-      rdf:type aml:RoleClass ;
-      rdfs:label "RoleClass 1"@en ;
-      schema:name "Tool"@en ;
-      aml:refBaseClassPath
-              "BaseRoleClassLib@AutomationMLBaseRoleClassLib/AutomationMLBaseRole" .
-
 aml:RoleRequirements
       rdf:type owl:Class ;
       rdfs:label "Role Requirements"@en .
 
-aml:RoleRequirements_1
-      rdf:type aml:RoleRequirements ;
-      rdfs:label "RoleRequirements_1"@en ;
-      aml:refBaseRoleClassPath
-              "ManufacturingRoleClasses/Tool"@en .
-
 aml:SupportedRoleClass
       rdf:type owl:Class ;
       rdfs:label "Supported Role Class"@en .
-
-aml:SupportedRoleClass1
-      rdf:type aml:SupportedRoleClass ;
-      rdfs:label "SupportedRoleClass1"@en ;
-      aml:refRoleClassPath
-              "ManufacturingRoleClasses/Tool"@en .
 
 aml:SystemUnitClass
       rdf:type owl:Class ;
@@ -223,23 +131,6 @@ aml:SystemUnitClassLib
       rdf:type owl:Class ;
       rdfs:label "System Unit ClassLib"@en ;
       rdfs:rdfscomment "Store vendor specific AML classes"@en .
-
-aml:SystemUnitClassLib_1
-      rdf:type aml:SystemUnitClassLib ;
-      rdfs:label "SystemUnitClassLib 1"@en ;
-      schema:name "LibOfCommonTools" ;
-      schema:version "1.0" ;
-      aml:hasSystemUnitClass
-              aml:SystemUnitClass_1 .
-
-aml:SystemUnitClass_1
-      rdf:type aml:SystemUnitClass ;
-      rdfs:label "SystemUnitClass 1"@en ;
-      schema:name "ElectricScrewdriver" ;
-      aml:hasExternalInterface
-              aml:ExternalInterface2 ;
-      aml:supportedRoleClass
-              aml:SupportedRoleClass1 .
 
 aml:externalReferenceAlias
       rdf:type owl:DatatypeProperty ;
@@ -339,16 +230,16 @@ aml:hasProjectTitle
 
 aml:hasRoleClass
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "A Role Class lib contains a Role Class"^^xsd:string ;
+      rdfs:comment "A Role Class lib contains a Role Class"@en ;
       rdfs:domain aml:RoleClassLib ;
-      rdfs:label "has Role Class"^^xsd:string ;
+      rdfs:label "has Role Class"@en ;
       rdfs:range aml:RoleClass .
 
 aml:hasRoleClassLib
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "A CAEX file contains a RoleClassLib"^^xsd:string ;
+      rdfs:comment "A CAEX file contains a RoleClassLib"@en ;
       rdfs:domain aml:CAEXFile ;
-      rdfs:label "has Role Class Lib"^^xsd:string ;
+      rdfs:label "has Role Class Lib"@en ;
       rdfs:range aml:RoleClassLib .
 
 aml:hasRoleRequeriment
@@ -371,9 +262,9 @@ aml:hasSystemUnitClass
 
 aml:hasSystemUnitClassLib
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "A CAEX File contains a SystemUnitClassLib"^^xsd:string ;
+      rdfs:comment "A CAEX File contains a SystemUnitClassLib"@en ;
       rdfs:domain aml:CAEXFile ;
-      rdfs:label "hasSystemUnitClassLib"^^xsd:string ;
+      rdfs:label "hasSystemUnitClassLib"@en ;
       rdfs:range aml:SystemUnitClassLib .
 
 aml:hasValue
@@ -455,7 +346,3 @@ aml:supportedRoleClass
       rdfs:domain aml:InternalElement , aml:SystemUnitClass ;
       rdfs:label "Supported Role Class"@en ;
       rdfs:range aml:SupportedRoleClass .
-
-<http://vocab.cs.uni-bonn.de/aml/#>
-      rdf:type owl:Ontology ;
-      owl:imports dc: .
