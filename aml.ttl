@@ -1,7 +1,4 @@
-# Saved by TopBraid on Wed Mar 02 17:26:17 CET 2016
 # baseURI: http://vocab.cs.uni-bonn.de/aml#
-# imports: http://purl.org/dc/elements/1.1/
-# imports: http://www.w3.org/2004/02/skos/core
 
 @prefix aml:     <http://vocab.cs.uni-bonn.de/aml#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
@@ -14,10 +11,10 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 schema:name
-      rdf:type owl:FunctionalProperty , owl:DatatypeProperty .
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty .
 
 aml:  rdf:type owl:Ontology ;
-      owl:imports dc: , <http://www.w3.org/2004/02/skos/core> .
+      owl:imports <http://www.w3.org/2004/02/skos/core> , dc: .
 
 aml:AdditionalInformation
       rdf:type owl:Class ;
@@ -142,6 +139,13 @@ aml:UnitOfMeasure
       rdfs:label "UnitOfMeasure"^^xsd:string ;
       rdfs:subClassOf owl:Thing .
 
+aml:externalInterfaceId
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:comment "Unique Id of an External Interface"^^xsd:string ;
+      rdfs:domain aml:ExternalInterface ;
+      rdfs:label "External Interface Id"^^xsd:string ;
+      rdfs:range xsd:string .
+
 aml:externalReferenceAlias
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "A external Reference of a CAEX File has Alias" ;
@@ -184,15 +188,12 @@ aml:hasDataType
       rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:Attribute ;
       rdfs:label "hasDataType"^^xsd:string ;
-      rdfs:range
-              [ rdf:type owl:Class ;
-                owl:unionOf (xsd:boolean xsd:integer xsd:float xsd:string xsd:dateTime)
-              ] .
+      rdfs:range xsd:anyURI .
 
 aml:hasExternalInterface
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Connects an internal Element with an External Interface"@en ;
-      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
+      rdfs:domain aml:InternalElement ;
       rdfs:label "has External Interface"@en ;
       rdfs:range aml:ExternalInterface .
 
@@ -247,12 +248,12 @@ aml:hasProjectId
       rdfs:domain aml:Project ;
       rdfs:label "hasProjectId"^^xsd:string ;
       rdfs:range xsd:string ;
-      rdfs:subPropertyOf dc:title , dc:identifier .
+      rdfs:subPropertyOf dc:identifier , dc:title .
 
 aml:hasProjectTitle
       rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:Project ;
-      rdfs:label "hasProjectTitle"^^xsd:string , "has Project Release" ;
+      rdfs:label "has Project Release" , "hasProjectTitle"^^xsd:string ;
       rdfs:range xsd:string ;
       rdfs:subPropertyOf dc:title .
 
@@ -296,11 +297,11 @@ aml:hasSystemUnitClassLib
       rdfs:range aml:SystemUnitClassLib .
 
 aml:hasUnit
-      rdf:type owl:ObjectProperty ;
+      rdf:type owl:DatatypeProperty ;
       rdfs:comment "An Attribute has Unit of Measure (e.g. kg, m/s, etc)"^^xsd:string ;
       rdfs:domain aml:Attribute ;
       rdfs:label "hasUnit"^^xsd:string ;
-      rdfs:range aml:UnitOfMeasure .
+      rdfs:range xsd:anyURI .
 
 aml:hasValue
       rdf:type owl:DatatypeProperty ;
@@ -314,7 +315,7 @@ aml:hasVersion
       rdfs:range xsd:string .
 
 aml:hasWriterId
-      rdf:type owl:DatatypeProperty ;
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:domain aml:AdditionalInformation ;
       rdfs:label "has Writer Id" ;
       rdfs:range xsd:string .
@@ -349,6 +350,13 @@ aml:hasWriterVersion
       rdfs:label "has Writer Version" ;
       rdfs:range xsd:string .
 
+aml:internalElementId
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:comment "Unique Id of an Internal Element"^^xsd:string ;
+      rdfs:domain aml:InternalElement ;
+      rdfs:label "internal Element Id"^^xsd:string ;
+      rdfs:range xsd:string .
+
 aml:lastWritingDate
       rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:AdditionalInformation ;
@@ -358,7 +366,7 @@ aml:lastWritingDate
 aml:refBaseClassPath
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Stores the name of the parent class"@en ;
-      rdfs:domain aml:RoleClassLib , aml:InterfaceClass , aml:ExternalInterface ;
+      rdfs:domain aml:ExternalInterface , aml:InterfaceClass , aml:RoleClassLib ;
       rdfs:label "refBaseClassPath"@en ;
       rdfs:range xsd:string .
 
@@ -378,6 +386,13 @@ aml:refRoleClassPath
 aml:supportedRoleClass
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Internal elements has Supported Role Class"@en ;
-      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
+      rdfs:domain aml:InternalElement , aml:SystemUnitClass ;
       rdfs:label "Supported Role Class"@en ;
       rdfs:range aml:SupportedRoleClass .
+
+aml:unitExternalInterface
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Connects a System Unit Class with an External Interface"@en ;
+      rdfs:domain aml:SystemUnitClass ;
+      rdfs:label "unit External Interface"@en ;
+      rdfs:range aml:ExternalInterface .
