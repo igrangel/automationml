@@ -1,3 +1,7 @@
+# Saved by TopBraid on Wed Mar 02 17:26:17 CET 2016
+# baseURI: http://vocab.cs.uni-bonn.de/aml#
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2004/02/skos/core
 
 @prefix aml:     <http://vocab.cs.uni-bonn.de/aml#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
@@ -9,12 +13,12 @@
 @prefix xml:     <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-aml:  rdf:type owl:Ontology ;
-      owl:imports <http://www.w3.org/2004/02/skos/core> , dc: .
-
 schema:name
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty .
-	  
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty .
+
+aml:  rdf:type owl:Ontology ;
+      owl:imports dc: , <http://www.w3.org/2004/02/skos/core> .
+
 aml:AdditionalInformation
       rdf:type owl:Class ;
       rdfs:label "Additional Information"@en ;
@@ -132,6 +136,12 @@ aml:SystemUnitClassLib
       rdfs:label "System Unit ClassLib"@en ;
       rdfs:rdfscomment "Store vendor specific AML classes"@en .
 
+aml:UnitOfMeasure
+      rdf:type owl:Class ;
+      rdfs:comment "Unit of Measure (e.g. kg). This should be aligned with existent online classes"^^xsd:string ;
+      rdfs:label "UnitOfMeasure"^^xsd:string ;
+      rdfs:subClassOf owl:Thing .
+
 aml:externalReferenceAlias
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "A external Reference of a CAEX File has Alias" ;
@@ -158,16 +168,31 @@ aml:hasAttribute
       rdfs:label "has Attribute"@en ;
       rdfs:range aml:Attribute .
 
+aml:hasAttributeName
+      rdf:type owl:DatatypeProperty ;
+      rdfs:domain aml:Attribute ;
+      rdfs:label "hasAttributeName"^^xsd:string ;
+      rdfs:range xsd:string .
+
 aml:hasAutomationMLVersion
       rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:AdditionalInformation ;
       rdfs:label "has Automation ML Version" ;
       rdfs:range xsd:string .
 
+aml:hasDataType
+      rdf:type owl:DatatypeProperty ;
+      rdfs:domain aml:Attribute ;
+      rdfs:label "hasDataType"^^xsd:string ;
+      rdfs:range
+              [ rdf:type owl:Class ;
+                owl:unionOf (xsd:boolean xsd:integer xsd:float xsd:string xsd:dateTime)
+              ] .
+
 aml:hasExternalInterface
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Connects an internal Element with an External Interface"@en ;
-      rdfs:domain aml:InternalElement , aml:SystemUnitClass ;
+      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
       rdfs:label "has External Interface"@en ;
       rdfs:range aml:ExternalInterface .
 
@@ -217,14 +242,16 @@ aml:hasProject
       rdfs:range aml:Project .
 
 aml:hasProjectId
+      rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:Project ;
-      rdfs:label "has Project Id" ;
+      rdfs:label "hasProjectId"^^xsd:string ;
       rdfs:range xsd:string ;
-      rdfs:subPropertyOf dc:identifier .
+      rdfs:subPropertyOf dc:title , dc:identifier .
 
 aml:hasProjectTitle
+      rdf:type owl:DatatypeProperty ;
       rdfs:domain aml:Project ;
-      rdfs:label "has Project Release" ;
+      rdfs:label "hasProjectTitle"^^xsd:string , "has Project Release" ;
       rdfs:range xsd:string ;
       rdfs:subPropertyOf dc:title .
 
@@ -266,6 +293,13 @@ aml:hasSystemUnitClassLib
       rdfs:domain aml:CAEXFile ;
       rdfs:label "hasSystemUnitClassLib"@en ;
       rdfs:range aml:SystemUnitClassLib .
+
+aml:hasUnit
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "An Attribute has Unit of Measure (e.g. kg, m/s, etc)"^^xsd:string ;
+      rdfs:domain aml:Attribute ;
+      rdfs:label "hasUnit"^^xsd:string ;
+      rdfs:range aml:UnitOfMeasure .
 
 aml:hasValue
       rdf:type owl:DatatypeProperty ;
@@ -323,7 +357,7 @@ aml:lastWritingDate
 aml:refBaseClassPath
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Stores the name of the parent class"@en ;
-      rdfs:domain aml:ExternalInterface , aml:InterfaceClass , aml:RoleClassLib ;
+      rdfs:domain aml:RoleClassLib , aml:InterfaceClass , aml:ExternalInterface ;
       rdfs:label "refBaseClassPath"@en ;
       rdfs:range xsd:string .
 
@@ -343,6 +377,6 @@ aml:refRoleClassPath
 aml:supportedRoleClass
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Internal elements has Supported Role Class"@en ;
-      rdfs:domain aml:InternalElement , aml:SystemUnitClass ;
+      rdfs:domain aml:SystemUnitClass , aml:InternalElement ;
       rdfs:label "Supported Role Class"@en ;
       rdfs:range aml:SupportedRoleClass .
