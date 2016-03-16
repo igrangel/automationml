@@ -210,6 +210,7 @@ aml:hasFileName
       rdfs:range xsd:string .
 
 aml:hasInstanceHierarchy
+      rdf:type owl:ObjectProperty ;
       rdfs:domain aml:CAEXFile ;
       rdfs:label "has Instance Hierarchy"@en ;
       rdfs:range aml:InstanceHierarchy .
