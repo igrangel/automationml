@@ -1,4 +1,7 @@
+# Saved by TopBraid on Wed Mar 16 15:32:09 CET 2016
 # baseURI: http://vocab.cs.uni-bonn.de/aml#
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2004/02/skos/core
 
 @prefix aml:     <http://vocab.cs.uni-bonn.de/aml#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
@@ -144,6 +147,12 @@ aml:externalInterfaceId
       rdfs:comment "Unique Id of an External Interface"^^xsd:string ;
       rdfs:domain aml:ExternalInterface ;
       rdfs:label "External Interface Id"^^xsd:string ;
+      rdfs:range xsd:string .
+
+aml:externalInterfaceName
+      rdf:type owl:DatatypeProperty ;
+      rdfs:domain aml:ExternalInterface ;
+      rdfs:label "external Interface Name"^^xsd:string ;
       rdfs:range xsd:string .
 
 aml:externalReferenceAlias
